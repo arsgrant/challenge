@@ -38,8 +38,4 @@ export class ProfessionalComponent implements OnInit {
     );
   }
 
-  showModal() {
-    
-  }
-
 }
