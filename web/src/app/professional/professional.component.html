@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-2">
+        
+        <div class="card mb-3" style="max-width: 540px;" *ngFor="let professional of list;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <a href="" [routerLink]="['schedule', professional.id]"><img src="assets/img/user.png" class="card-img" alt="..." /></a>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{professional.name}}</h5>
+                        <p class="card-text"><span class="text-primary">{{professional.branch}}</span> | {{professional.location}}</p>
+                        <p class="card-text"><small class="text-muted"><span class="font-weight-bold">R${{professional.value}} </span> / {{professional.time}} MINUTES</small></p>
+                        <p class="card-text">{{professional.about}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" (ngClick)="showModal()">
+    Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="modalSchedule" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Schedule your session!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+              
+        <div class="row justify-content-md-center">
+            <div class="col col-lg-1 text-center">
+              <button type="button" class="btn btn-secondary"><<</button>
+            </div>
+            <div class="col text-center">
+                
+                  <div class="row row-cols-1 row-cols-md-4 text-center">
+                      <div class="ui-g-12 ui-md-1" *ngFor="let schedule of list;">
+                          <table class="table table-borderless table-responsive justify-content-center">
+                              <thead>
+                                  <tr>
+                                      <th scope="col" class="justify-content-center">                   
+                                          <p class="text-muted"> {{schedule.date | date: "EE"}} </p>
+                                          {{schedule.date | date: "MMM dd"}}
+                                      </th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let time of schedule.times;" class="justify-content-center">
+                                      <th class="table-secondary">{{time.time}}</th>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div> 
+                  </div>
+          
+            </div>
+            <div class="col col-lg-1 text-center">
+              <button type="button" class="btn btn-secondary">>></button>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Confirm</button>
+        </div>
+      </div>
+    </div>
+</div>

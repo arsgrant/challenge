@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="toolbar" role="banner">
+        <p class="mx-auto">Schedule your session!</p>
+    </div>    
+</div>
+
+<div class="container">
+
+    
+        <div class="row justify-content-md-center">
+          <div class="col col-lg-1 text-center">
+            <button type="button" class="btn btn-secondary" (click)="priorPage()"><<</button>
+          </div>
+          <div class="col text-center">
+              
+                <div class="row row-cols-1 row-cols-md-4 text-center">
+                    <div class="ui-g-12 ui-md-1" *ngFor="let schedule of list | paginate: { itemsPerPage: 4, currentPage: page }">
+                        <table class="table table-borderless table-responsive justify-content-center">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="justify-content-center">                   
+                                        <p class="text-muted"> {{schedule.date | date: "EE"}} </p>
+                                        {{schedule.date | date: "MMM dd"}}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let time of schedule.times | paginate: { itemsPerPage: 5, currentPage: pageTime }" class="justify-content-center">
+                                    <th class="table-secondary">{{time.time}}</th>
+                                </tr>
+                                <tr class="justify-content-center">
+                                    <th class="table-secondary">
+                                        <button type="button" class="btn btn-secondary btn-sm" (click)="priorPageTime()"><<</button>
+                                        <button type="button" class="btn btn-secondary btn-sm" (click)="nextPageTime()">>></button>
+                                    </th>
+                                </tr>                                
+                            </tbody>
+                        </table>
+                    </div> 
+                </div>
+        
+          </div>
+          <div class="col col-lg-1 text-center">
+            <button type="button" class="btn btn-secondary" (click)="nextPage()">>></button>
+          </div>
+        </div>
+    
+    
+
+</div>
+  <!--
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-4">
+
+            <ul  class="list-group" *ngFor="let schedule of list;">
+                
+                <li class="list-group-item" >      
+                    <p class="text-muted"> {{schedule.date | date: "EE"}} </p>
+                    {{schedule.date | date: "MMM dd"}}
+                </li>
+
+                <li role="button" class="list-group-item list-group-item-action " *ngFor="let time of schedule.times;">{{time.time}}</li>
+
+            </ul>
+
+    </div>
+</div>
+-->
