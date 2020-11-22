@@ -33,7 +33,16 @@
         </li>
         <li></li>
     </ul>
-    
+
+    <div>
+        <button type="button" class="btn btn-primary" (click)="confirm()">Confirm</button>
+        <button type="button" class="btn btn-light">Cancel</button>
+    </div>
+    <br/>
+    <div [className]="classMessage" role="alert" *ngIf="message">
+        {{message}}
+    </div>
+
 </div>
 
 <br/>

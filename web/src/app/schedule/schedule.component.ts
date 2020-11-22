@@ -25,6 +25,12 @@ export class ScheduleComponent implements OnInit {
 
   timeChecked : any = null;
 
+  showMessage: Boolean = false;
+  message: "";
+  classMessage: any;
+
+  interval : any = null;
+
   constructor(
     private route: ActivatedRoute,
     private httpService: HttpService,
@@ -85,6 +91,32 @@ export class ScheduleComponent implements OnInit {
         }
         this.timeChecked = time;
         time.checked = true;
+      }
+    }
+
+    private sendeDangerMessage(msg) {
+      this.classMessage = "alert alert-danger";
+      this.message = msg;
+      this.interval = setInterval(() => {
+        this.message = "";
+        clearInterval(this.interval);
+      }, 3000);
+    }
+
+    private sendeSuccessMessage(msg) {
+      this.classMessage = "alert alert-success";
+      this.message = msg;
+      this.interval = setInterval(() => {
+        this.message = "";
+        clearInterval(this.interval);
+      }, 3000);
+    }
+
+    confirm() {
+      if (this.timeChecked==null) {
+        this.sendeDangerMessage("Choice a time!");
+      } else {
+        this.sendeSuccessMessage("Scheduled time!");
       }
     }
 

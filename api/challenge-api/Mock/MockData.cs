@@ -23,6 +23,15 @@ namespace challenge_api.Mock
             list.Add(new ScheduleTime() { Time = "11:30", Busy = rand.Next(2) == 0 });
             list.Add(new ScheduleTime() { Time = "14:00", Busy = rand.Next(2) == 0 });
             list.Add(new ScheduleTime() { Time = "14:30", Busy = rand.Next(2) == 0 });
+            list.Add(new ScheduleTime() { Time = "15:00", Busy = rand.Next(2) == 0 });
+            list.Add(new ScheduleTime() { Time = "15:30", Busy = rand.Next(2) == 0 });
+            list.Add(new ScheduleTime() { Time = "16:00", Busy = rand.Next(2) == 0 });
+            list.Add(new ScheduleTime() { Time = "16:30", Busy = rand.Next(2) == 0 });
+            list.Add(new ScheduleTime() { Time = "17:00", Busy = rand.Next(2) == 0 });
+            list.Add(new ScheduleTime() { Time = "17:30", Busy = rand.Next(2) == 0 });
+            list.Add(new ScheduleTime() { Time = "18:00", Busy = rand.Next(2) == 0 });
+            list.Add(new ScheduleTime() { Time = "18:30", Busy = rand.Next(2) == 0 });
+            list.Add(new ScheduleTime() { Time = "19:00", Busy = rand.Next(2) == 0 });
 
             return list;
         }
@@ -30,7 +39,7 @@ namespace challenge_api.Mock
         {
             List<Schedule> list = new List<Schedule>();
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 32; i++)
             {
                 Schedule schedule = new Schedule() { Date = DateTime.Now.AddDays(i) };
                 schedule.times = this.GetTimes();
