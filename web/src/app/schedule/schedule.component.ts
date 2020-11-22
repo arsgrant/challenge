@@ -23,6 +23,8 @@ export class ScheduleComponent implements OnInit {
   pageTimeCount: number;
   pageTime: number = 1 ;
 
+  timeChecked : any = null;
+
   constructor(
     private route: ActivatedRoute,
     private httpService: HttpService,
@@ -38,7 +40,8 @@ export class ScheduleComponent implements OnInit {
             .subscribe(
                 (res) => {
                   this.list = res;
-                  this.pageCount = this.list.length / 4;
+                  this.pageCount = Math.trunc(this.list.length / 5);
+                  this.pageTimeCount = Math.trunc(this.list[0].times.length / 5);
                 },
                 (error) => {
                   alert(error.message);
@@ -67,9 +70,22 @@ export class ScheduleComponent implements OnInit {
     }
 
     nextPageTime() {
-      if (this.pageTime < this.pageCount) {
+      if (this.pageTime < this.pageTimeCount) {
         this.pageTime++;
       }
     }    
+
+    choiceTime(time) {
+      if (time===this.timeChecked) {
+        this.timeChecked.checked = false;
+        this.timeChecked = null;
+      } else {
+        if (this.timeChecked) {
+          this.timeChecked.checked = false;
+        }
+        this.timeChecked = time;
+        time.checked = true;
+      }
+    }
 
 }

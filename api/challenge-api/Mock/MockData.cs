@@ -32,7 +32,7 @@ namespace challenge_api.Mock
 
             for (int i = 0; i < 10; i++)
             {
-                Schedule schedule = new Schedule() { Date = new DateTime().AddDays(i) };
+                Schedule schedule = new Schedule() { Date = DateTime.Now.AddDays(i) };
                 schedule.times = this.GetTimes();
                 list.Add(schedule);
             }
