@@ -1,6 +1,6 @@
 <div class="container">
     <h5 class="card-title">Choice a professional</h5>
-    <div class="row row-cols-1 row-cols-md-2">
+    <div class="row row-cols-1 row-cols-md-1">
         
         <div class="card mb-3" style="max-width: 540px;" *ngFor="let professional of list;">
             <div class="row no-gutters">
@@ -8,7 +8,7 @@
                     <a href="" [routerLink]="['schedule', professional.id]"><img src="assets/img/user.png" class="card-img" alt="..." /></a>
                 </div>
                 <div class="col-md-8">
-                    <div class="card-body">
+                    <div class="card-body" [routerLink]="['schedule', professional.id]" style="cursor: pointer;">
                         <h5 class="card-title">{{professional.name}}</h5>
                         <p class="card-text"><span class="text-primary">{{professional.branch}}</span> | {{professional.location}}</p>
                         <p class="card-text"><small class="text-muted"><span class="font-weight-bold">R${{professional.value}} </span> / {{professional.time}} MINUTES</small></p>
