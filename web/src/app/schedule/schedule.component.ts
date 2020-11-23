@@ -120,4 +120,8 @@ export class ScheduleComponent implements OnInit {
       }
     }
 
+    cancel() {
+      this.router.navigate(['/professional']);
+    }
+
 }
